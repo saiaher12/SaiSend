@@ -88,3 +88,8 @@ async def download_file(code: str):
         raise HTTPException(status_code=404, detail="File not found")
 
     return FileResponse(path, filename=meta["filename"], media_type='application/octet-stream')
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
